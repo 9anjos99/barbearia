@@ -20,12 +20,9 @@ const RegisterPage = () => {
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, you would send this data to your backend
-    // to create a new user and then log them in.
     if (name && email && password && selectedRole) {
-      // Simulate successful registration and immediate login
       login(selectedRole);
-      showSuccess(`Registered and logged in as ${selectedRole}!`);
+      showSuccess(`Registrado e login realizado como ${selectedRole}!`);
       switch (selectedRole) {
         case 'admin':
           navigate('/admin');
@@ -40,7 +37,7 @@ const RegisterPage = () => {
           navigate('/');
       }
     } else {
-      showError('Please fill in all fields and select a role.');
+      showError('Por favor, preencha todos os campos e selecione um perfil.');
     }
   };
 
@@ -48,35 +45,35 @@ const RegisterPage = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Register</CardTitle>
-          <CardDescription>Create a new account to get started.</CardDescription>
+          <CardTitle className="text-2xl">Registrar</CardTitle>
+          <CardDescription>Crie uma nova conta para começar.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleRegister} className="space-y-4">
             <div>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Nome</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="John Doe"
+                placeholder="João Silva"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="m@exemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Senha</Label>
               <Input
                 id="password"
                 type="password"
@@ -86,26 +83,25 @@ const RegisterPage = () => {
               />
             </div>
             <div>
-              <Label htmlFor="role">Register as</Label>
+              <Label htmlFor="role">Registrar como</Label>
               <Select onValueChange={(value: UserRole) => setSelectedRole(value)} defaultValue={selectedRole || undefined}>
                 <SelectTrigger id="role">
-                  <SelectValue placeholder="Select a role" />
+                  <SelectValue placeholder="Selecione um perfil" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="client">Client</SelectItem>
-                  <SelectItem value="barber">Barber</SelectItem>
-                  {/* Admin registration would typically be restricted to existing admins */}
+                  <SelectItem value="client">Cliente</SelectItem>
+                  <SelectItem value="barber">Barbeiro</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <Button type="submit" className="w-full">
-              Register
+              Registrar
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-            Already have an account?{' '}
+            Já tem uma conta?{' '}
             <a href="/login" className="text-blue-600 hover:underline">
-              Login
+              Entrar
             </a>
           </p>
         </CardContent>

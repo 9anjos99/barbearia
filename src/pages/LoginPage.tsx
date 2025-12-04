@@ -19,11 +19,9 @@ const LoginPage = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, you would send these credentials to your backend
-    // and receive a token and user role.
     if (email && password && selectedRole) {
       login(selectedRole);
-      showSuccess(`Logged in as ${selectedRole}!`);
+      showSuccess(`Login realizado como ${selectedRole}!`);
       switch (selectedRole) {
         case 'admin':
           navigate('/admin');
@@ -38,7 +36,7 @@ const LoginPage = () => {
           navigate('/');
       }
     } else {
-      showError('Please enter email, password, and select a role.');
+      showError('Por favor, insira e-mail, senha e selecione um perfil.');
     }
   };
 
@@ -46,24 +44,24 @@ const LoginPage = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>Enter your credentials to access your account.</CardDescription>
+          <CardTitle className="text-2xl">Entrar</CardTitle>
+          <CardDescription>Insira suas credenciais para acessar sua conta.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="m@exemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Senha</Label>
               <Input
                 id="password"
                 type="password"
@@ -73,26 +71,26 @@ const LoginPage = () => {
               />
             </div>
             <div>
-              <Label htmlFor="role">Login as</Label>
+              <Label htmlFor="role">Entrar como</Label>
               <Select onValueChange={(value: UserRole) => setSelectedRole(value)} defaultValue={selectedRole || undefined}>
                 <SelectTrigger id="role">
-                  <SelectValue placeholder="Select a role" />
+                  <SelectValue placeholder="Selecione um perfil" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="client">Client</SelectItem>
-                  <SelectItem value="barber">Barber</SelectItem>
-                  <SelectItem value="admin">Admin</SelectItem>
+                  <SelectItem value="client">Cliente</SelectItem>
+                  <SelectItem value="barber">Barbeiro</SelectItem>
+                  <SelectItem value="admin">Administrador</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <Button type="submit" className="w-full">
-              Login
+              Entrar
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-            Don't have an account?{' '}
+            Não tem uma conta?{' '}
             <a href="/register" className="text-blue-600 hover:underline">
-              Register
+              Registrar
             </a>
           </p>
         </CardContent>

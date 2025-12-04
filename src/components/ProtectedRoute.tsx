@@ -13,18 +13,14 @@ const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
   const { isAuthenticated, userRole, loading } = useAuth();
 
   if (loading) {
-    // You might want a loading spinner here
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+    return <div className="flex items-center justify-center min-h-screen">Carregando...</div>;
   }
 
   if (!isAuthenticated) {
-    // User is not authenticated, redirect to login page
     return <Navigate to="/login" replace />;
   }
 
   if (allowedRoles && userRole && !allowedRoles.includes(userRole)) {
-    // User is authenticated but does not have an allowed role, redirect to a forbidden page or their dashboard
-    // For simplicity, we'll redirect to the root or their own dashboard if it exists.
     switch (userRole) {
       case 'admin':
         return <Navigate to="/admin" replace />;

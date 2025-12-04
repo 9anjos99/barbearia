@@ -11,13 +11,12 @@ const Index = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-        <p className="text-xl text-gray-600 dark:text-gray-400">Loading application...</p>
+        <p className="text-xl text-gray-600 dark:text-gray-400">Carregando aplicação...</p>
       </div>
     );
   }
 
   if (isAuthenticated) {
-    // Redirect authenticated users to their respective dashboards
     switch (userRole) {
       case 'admin':
         return <Link to="/admin" replace />;
@@ -26,7 +25,6 @@ const Index = () => {
       case 'client':
         return <Link to="/client" replace />;
       default:
-        // Fallback for unexpected roles or if role is null but authenticated
         return <Link to="/client" replace />;
     }
   }
@@ -35,18 +33,18 @@ const Index = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
       <div className="text-center space-y-6">
         <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-          Welcome to Barbershop Scheduler
+          Bem-vindo ao Agendador de Barbearia
         </h1>
         <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-          Your one-stop solution for managing barbershop appointments.
-          Clients can book, barbers can manage their schedules, and admins have full control.
+          Sua solução completa para gerenciar agendamentos de barbearia.
+          Clientes podem agendar, barbeiros podem gerenciar suas agendas e administradores têm controle total.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
           <Button asChild size="lg" className="text-lg px-8 py-4">
-            <Link to="/login">Login</Link>
+            <Link to="/login">Entrar</Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="text-lg px-8 py-4">
-            <Link to="/register">Register</Link>
+            <Link to="/register">Registrar</Link>
           </Button>
         </div>
       </div>
