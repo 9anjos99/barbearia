@@ -13,6 +13,17 @@ import RegisterPage from "./pages/RegisterPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import BarberDashboard from "./pages/BarberDashboard";
 import ClientDashboard from "./pages/ClientDashboard";
+import BuscarBarbeiro from "./pages/BuscarBarbeiro";
+import PerfilBarbeiro from "./pages/PerfilBarbeiro";
+import AgendarHorario from "./pages/AgendarHorario";
+import MinhaDisponibilidade from "./pages/MinhaDisponibilidade";
+import BarberAgendamentos from "./pages/BarberAgendamentos";
+import MeusAgendamentos from "./pages/MeusAgendamentos";
+import GerenciarBarbeiros from "./pages/GerenciarBarbeiros";
+import GerenciarUsuarios from "./pages/GerenciarUsuarios";
+import VerTodasAgendas from "./pages/VerTodasAgendas";
+import EditarPerfilBarbeiro from "./pages/EditarPerfilBarbeiro";
+
 
 const queryClient = new QueryClient();
 
@@ -28,6 +39,7 @@ const App = () => (
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
+            {/* Rotas Protegidas */}
             <Route
               path="/admin"
               element={
@@ -49,6 +61,92 @@ const App = () => (
               element={
                 <ProtectedRoute allowedRoles={['client']}>
                   <ClientDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Rotas do Cliente */}
+            <Route
+              path="/buscar"
+              element={
+                <ProtectedRoute allowedRoles={['client']}>
+                  <BuscarBarbeiro />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/barbeiro/:id"
+              element={
+                <ProtectedRoute allowedRoles={['client']}>
+                  <PerfilBarbeiro />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/agendar/:barberId/:timeSlotId"
+              element={
+                <ProtectedRoute allowedRoles={['client']}>
+                  <AgendarHorario />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/meus-agendamentos"
+              element={
+                <ProtectedRoute allowedRoles={['client']}>
+                  <MeusAgendamentos />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Rotas do Barbeiro */}
+            <Route
+              path="/barber/disponibilidade"
+              element={
+                <ProtectedRoute allowedRoles={['barber']}>
+                  <MinhaDisponibilidade />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/barber/agendamentos"
+              element={
+                <ProtectedRoute allowedRoles={['barber']}>
+                  <BarberAgendamentos />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/barber/editar-perfil"
+              element={
+                <ProtectedRoute allowedRoles={['barber']}>
+                  <EditarPerfilBarbeiro />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Rotas do Administrador */}
+            <Route
+              path="/admin/gerenciar-barbeiros"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <GerenciarBarbeiros />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/gerenciar-usuarios"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <GerenciarUsuarios />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/ver-todas-agendas"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <VerTodasAgendas />
                 </ProtectedRoute>
               }
             />

@@ -4,6 +4,7 @@ import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const { logout } = useAuth();
@@ -19,10 +20,17 @@ const AdminDashboard = () => {
             Bem-vindo, Administrador! Aqui você gerenciará barbeiros, usuários, agendas e agendamentos.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Button className="w-full h-12 text-lg">Gerenciar Barbeiros</Button>
-            <Button className="w-full h-12 text-lg">Gerenciar Usuários</Button>
-            <Button className="w-full h-12 text-lg">Ver Todas as Agendas</Button>
-            <Button className="w-full h-12 text-lg">Gerenciar Agendamentos</Button>
+            <Button asChild className="w-full h-12 text-lg">
+              <Link to="/admin/gerenciar-barbeiros">Gerenciar Barbeiros</Link>
+            </Button>
+            <Button asChild className="w-full h-12 text-lg">
+              <Link to="/admin/gerenciar-usuarios">Gerenciar Usuários</Link>
+            </Button>
+            <Button asChild className="w-full h-12 text-lg">
+              <Link to="/admin/ver-todas-agendas">Ver Todas as Agendas</Link>
+            </Button>
+            {/* Adicionar botão para gerenciar agendamentos se for uma tela separada */}
+            <Button className="w-full h-12 text-lg" disabled>Gerenciar Agendamentos (em breve)</Button>
           </div>
           <div className="flex justify-center">
             <Button onClick={logout} variant="destructive" className="mt-6 w-1/2 h-12 text-lg">
