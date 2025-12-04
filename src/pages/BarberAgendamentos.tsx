@@ -107,7 +107,6 @@ const BarberAgendamentos = () => {
         </Card>
       </div>
     );
-  );
   }
 
   return (
