@@ -7,7 +7,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { showSuccess, showError } from '@/utils/toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Link } from 'react-router-dom'; // Adicionado importação do Link
 import {
   AlertDialog,
   AlertDialogAction,
